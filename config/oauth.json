@@ -1,0 +1,7 @@
+{
+  "refreshTokenLifetime": 0,
+  "accessTokenLifetime": 0,
+  "authorizationCodeLifetime": 0,
+  "addAcceptedScopesHeader": true,
+  "addAuthorizedScopesHeader": true
+}
