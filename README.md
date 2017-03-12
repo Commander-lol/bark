@@ -1,7 +1,7 @@
 # Bark
 A modern blogging platform
 
-Bark aims to provide a simple to set up blogging experience, with a lot of extensibility for those that need it. Out of the box caching, email sending, file management, theming and more with options for local or cloud solutions for those services.
+Bark aims to provide a simple to set up blogging experience, with a lot of extensibility for those that need it. Out of the box caching, emails, file management, theming and more with options for local or cloud solutions for those services.
 
 ## Installation
 
