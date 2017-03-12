@@ -6,7 +6,8 @@
   "author": "Louis Capitanchik <contact@louiscap.co>",
   "license": "BSD-2-Clause",
   "scripts": {
-    "dev": "nodemon bark"
+    "dev": "nodemon bark",
+	"postinstall": "node jeeves inform"
   },
   "dependencies": {
     "chalk": "^1.1.3",

@@ -19,7 +19,6 @@ const nameToPath = name => name.split(COMMAND_DELIM).join('/')
 const pathToName = path => path.split('/').join(COMMAND_DELIM)
 
 if (args['<command>']) {
-	console.log(args)
 	const Command = loadModule(nameToPath(args['<command>']))
 	const subargs = neodoc.run(Command.usage)
 	const instance = new Command()
