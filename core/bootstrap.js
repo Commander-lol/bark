@@ -7,3 +7,12 @@ global.env = (name, def = null) => {
 	}
 	return val
 }
+
+global.service = {
+	get logger() {
+		return require('./logger')
+	},
+	get cache() {
+		return require('./cache')
+	},
+}
