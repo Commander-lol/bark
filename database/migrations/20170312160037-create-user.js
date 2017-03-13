@@ -20,7 +20,7 @@ module.exports = {
 				type: Sequelize.STRING
 			},
 			role: {
-				type: Sequelize.NUMBER
+				type: Sequelize.INTEGER
 			},
 			created_at: {
 				allowNull: false,
@@ -34,5 +34,5 @@ module.exports = {
 	},
 	down: function (queryInterface, Sequelize) {
 		return queryInterface.dropTable('Users');
-	},
+	}
 }

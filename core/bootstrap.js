@@ -20,3 +20,6 @@ global.service = {
 		return require('./cache')
 	},
 }
+
+// Root level require for local modules without needing to set NODE_PATH
+global.local = path => require('../' + path)

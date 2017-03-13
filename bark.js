@@ -1,5 +1,5 @@
 require('./core/bootstrap')
-const app = require('./core/app')
+const app = local('core/app')
 const { logger } = service
 
 app.listen(env('PORT', '5000'))

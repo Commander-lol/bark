@@ -1,9 +1,10 @@
 const app = new (require('koa'))
+const body = require('koa-bodyparser')
 
-const web = require('../http/web')
-const api = require('../http/api')
+const web = local('http/web')
+const api = local('http/api')
 
-const { subdomains } = require('../http/utils')
+const { subdomains } = local('http/utils')
 
 const apply = router => {
 	app.use(router.routes())
@@ -11,6 +12,8 @@ const apply = router => {
 }
 
 app.on('error', err => service.logger.error(err))
+
+app.use(body())
 
 if (env('API_STRATEGY') === 'path') {
 	apply(web)
@@ -21,5 +24,9 @@ if (env('API_STRATEGY') === 'path') {
 		'api': api,
 	}))
 }
+
+process.on('unhandledRejection', (err, p) => {
+	service.logger.critical(err)
+})
 
 module.exports = app
