@@ -4,6 +4,7 @@ module.exports = class DatabaseQuery {
 	}
 
 	where(field, comparator, value = null) {
+		console.log(field, comparator, value)
 		if (value == null) {
 			this._where.set(field, { '$eq': comparator })
 		} else {

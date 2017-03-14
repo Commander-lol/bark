@@ -9,12 +9,21 @@ exports.index = async ctx => {
 	ctx.body = { users }
 }
 
+exports.one = async ctx => {
+	ctx.body = { user: ctx.params.user }
+}
+
 const validateNewUser = Validator({
 	email: [
 		rules.exists('email'),
 		rules.isString('email'),
 		rules.notEmpty('email'),
 	],
+	password: [
+		rules.exists('password'),
+		rules.isString('password'),
+		password => password.length > 6 ? null : 'password must be at least 6 characters long'
+	]
 })
 
 exports.create = async ctx => {
@@ -24,6 +33,8 @@ exports.create = async ctx => {
 		ctx.status = 400
 		ctx.body = errors
 	} else {
-		console.log("Valid user")
+		const val = await UserRepo.create(body)
+		console.log(val)
+		ctx.body = { result: val }
 	}
 }

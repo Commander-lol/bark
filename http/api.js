@@ -1,4 +1,5 @@
-const controller = (name, method) => local('controllers/api/' + name)[method]
+const controller = (name, method) => require('./controllers/api/' + name)[method]
+const hydrateUsers = require('./middleware/hydrate/user')
 const Router = require('koa-router')
 const router = (() => {
 	if (env('API_STRATEGY') === 'path') {
@@ -8,7 +9,10 @@ const router = (() => {
 	return new Router()
 })()
 
+hydrateUsers(router)
+
 router.get('/users', controller('users', 'index'))
+router.get('/users/:userId', controller('users', 'one'))
 router.post('/users', controller('users', 'create'))
 
 module.exports = router

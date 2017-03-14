@@ -1,4 +1,4 @@
-const controller = (name, method) => local('controllers/web/' + name)[method]
+const controller = (name, method) => require('./controllers/web/' + name)[method]
 const Router = require('koa-router')
 const router = new Router()
 
