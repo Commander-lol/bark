@@ -15,4 +15,5 @@ module.exports = {
 		}
 		return null
 	},
+	isBool: name => val => nullIfTrue((val === true || val === false) || `${name} must be a boolean value`),
 }
