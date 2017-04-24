@@ -1,5 +1,7 @@
 require('dotenv').load()
 
+const fs = require('fs-jetpack')
+
 global.env = (name, def = null) => {
 	const val = process.env[name]
 	if (val == null || val === '') {
@@ -21,5 +23,10 @@ global.service = {
 	},
 }
 
+// A jetpack instance set to the root application dir
+global.jetpack = fs.cwd(__dirname, '..')
+
 // Root level require for local modules without needing to set NODE_PATH
 global.local = path => require('../' + path)
+
+require('./utils/defineHandlebarsHelpers')

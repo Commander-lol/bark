@@ -1,4 +1,5 @@
 const hydrateUsers = require('./middleware/hydrate/user')
+const hydratePosts = require('./middleware/hydrate/post')
 const Router = require('koa-router')
 
 const controller = (name, method) => require('./controllers/api/' + name)[method]
@@ -12,6 +13,7 @@ const router = (() => {
 })()
 
 hydrateUsers(router)
+hydratePosts(router)
 
 router.get('/users', controller('users', 'index'))
 router.get('/users/:userId', controller('users', 'one'))

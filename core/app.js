@@ -5,6 +5,7 @@ const web = local('http/web')
 const api = local('http/api')
 
 const { subdomains } = local('http/utils')
+const httpLogger = local('http/middleware/logging/http')
 
 const apply = router => {
 	app.use(router.routes())
@@ -14,6 +15,8 @@ const apply = router => {
 app.on('error', err => service.logger.error(err))
 
 app.use(body())
+
+app.use(httpLogger)
 
 if (env('API_STRATEGY') === 'path') {
 	apply(web)
