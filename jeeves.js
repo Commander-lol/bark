@@ -25,7 +25,7 @@ if (args['<command>']) {
 	instance.run(subargs)
 } else {
 	const Type = require('./console/AbstractCommand')
-	const filter = [ 'utils.js', 'AbstractCommand.js' ]
+	const filter = [ 'utils.js', 'lib', 'AbstractCommand.js' ]
 	const delve = (dir) => {
 		return dir.list().reduce((acc, cur) => {
 			if (filter.includes(cur)) return acc
