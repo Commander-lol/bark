@@ -54,9 +54,9 @@ class EnvironmentFile {
 
 		Object.defineProperties(this, {
 			/** map is a relation of env file data key to node list index, for faster lookups of KV entries**/
-			map: { value: valueMap, writable: false, enumerable: true },
+			map: { value: valueMap, writable: true, enumerable: true },
 			/** nodes is the parsed list of entries in the env file **/
-			nodes: { value: nodes, writable: false, enumerable: true },
+			nodes: { value: nodes, writable: true, enumerable: true },
 		})
 	}
 
