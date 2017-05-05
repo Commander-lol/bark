@@ -14,6 +14,8 @@ exports.findOne = query => BlogPost.findOne(query.get())
 
 exports.find = query => BlogPost.findAll(query.get())
 
+exports.all = () => exports.find((new Query))
+
 // id is a uuid, reasonably certain that it won't collide with a pretty slug
 // (Also you're an asshole if you get the uuid of one post and set it as the
 // slug of another post, so you deserve everything you get in that case)

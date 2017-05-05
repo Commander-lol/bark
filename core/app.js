@@ -1,11 +1,14 @@
 const app = new (require('koa'))
 const body = require('koa-bodyparser')
+const mount = require('koa-mount')
 
 const web = local('http/web')
 const api = local('http/api')
-
 const { subdomains } = local('http/utils')
+
+const graphql = local('services/graphql')
 const httpLogger = local('http/middleware/logging/http')
+
 
 const apply = router => {
 	app.use(router.routes())
@@ -17,6 +20,8 @@ app.on('error', err => service.logger.error(err))
 app.use(body())
 
 app.use(httpLogger)
+
+app.use(mount('/graphql', graphql))
 
 if (env('API_STRATEGY') === 'path') {
 	apply(web)
