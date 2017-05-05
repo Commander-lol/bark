@@ -20,6 +20,7 @@ router.get('/users/:userId', controller('users', 'one'))
 router.post('/users', controller('users', 'create'))
 
 router.get('/posts', controller('posts', 'index'))
+router.get('/posts/:postId', controller('posts', 'one'))
 router.post('/posts', controller('posts', 'create'))
 
 module.exports = router

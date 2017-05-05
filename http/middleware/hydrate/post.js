@@ -9,7 +9,7 @@ module.exports = router => {
 				message: 'Cannot find post ' + postId
 			}
 		} else {
-			ctx.params.user = post
+			ctx.params.post = post
 			await next()
 		}
 	})

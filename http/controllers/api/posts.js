@@ -2,15 +2,17 @@ const BlogRepo = local('database/repositories/post')
 const Query = local('database/Query')
 const rules = local('core/validator/rules')
 const Validator = require('@commander-lol/validate')
+const serialise = require('../../serialisers/post')
 
 exports.index = async ctx => {
 	const query = new Query()
 	const posts = await BlogRepo.find(query)
-	ctx.body = { posts }
+	console.log(posts)
+	ctx.body = { posts: posts.map(serialise) }
 }
 
 exports.one = async ctx => {
-	ctx.body = { user: ctx.params.post }
+	ctx.body = { post: serialise(ctx.params.post) }
 }
 
 const validateNewPost = Validator({
