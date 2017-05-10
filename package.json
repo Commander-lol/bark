@@ -25,6 +25,7 @@
     "koa-mount": "^3.0.0",
     "koa-router": "^7.1.0",
     "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "mysql": "^2.13.0",
     "neodoc": "^1.4.0",
     "sequelize": "^3.30.2",

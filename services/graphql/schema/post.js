@@ -1,7 +1,9 @@
 const graphql = require('graphql')
 const { type: user } = require('./user')
+const { Date } = require('./types')
 
 const PostRepo = local('database/repositories/post')
+const Query = local('database/Query')
 
 // Define the User type
 const postType = new graphql.GraphQLObjectType({
@@ -13,6 +15,7 @@ const postType = new graphql.GraphQLObjectType({
 		content: { type: graphql.GraphQLString },
 		author_id: { type: graphql.GraphQLInt },
 		author: { type: user },
+		created_at: { type: Date },
 	}
 });
 
@@ -28,7 +31,16 @@ exports.post = {
 
 exports.posts = {
 	type: new graphql.GraphQLList(postType),
-	resolve: async function() {
-		return await PostRepo.all()
+	args: {
+		before: { type: Date },
+		after: { type: Date },
+	},
+	resolve: async function(_, { before, after }) {
+		const query = new Query()
+
+		if (before) query.before('created_at', before)
+		if (after) query.after('created_at', after)
+
+		return await PostRepo.find(query)
 	}
 }
