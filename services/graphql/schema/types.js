@@ -3,6 +3,7 @@ const moment = require('moment')
 
 exports.Date = new graphql.GraphQLScalarType({
 	name: 'Date',
+	description: 'A moment.js compatible UTC date time string',
 	serialize(value) {
 		return moment.utc(value).toISOString()
 	},

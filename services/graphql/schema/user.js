@@ -3,11 +3,12 @@ const graphql = require('graphql')
 const UserRepo = local('database/repositories/user')
 
 // Define the User type
-const userType = new graphql.GraphQLObjectType({
+const userType = exports.type = new graphql.GraphQLObjectType({
 	name: 'User',
+	description: 'The User type represents a user in the system. This can be an author, a commenter or a person with hybrid permissions',
 	fields: {
-		id: { type: graphql.GraphQLString },
-		email: { type: graphql.GraphQLString },
+		id: { type: graphql.GraphQLString, description: 'The unique numeric identifier for the User' },
+		email: { type: graphql.GraphQLString, description: 'The contact email address used to validate this user account' },
 	}
 });
 
@@ -27,5 +28,3 @@ exports.users = {
 		return await UserRepo.all()
 	}
 }
-
-exports.type = userType
