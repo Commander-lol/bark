@@ -3,9 +3,17 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>{{ page_title }} :: {{ blog_name }}</title>
+		<title>{{#block "title"}}Blog{{/block}} :: {{ blog_name }}</title>
+
+		{{#block "styles"}}
+
+		{{/block}}
 	</head>
 	<body>
-		{{#block "content"}}{{/block}}
+		{{#block "body"}}{{/block}}
+
+		{{#block "scripts"}}
+
+		{{/block}}
 	</body>
 </html>
