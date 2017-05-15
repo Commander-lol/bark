@@ -26,6 +26,7 @@ exports.post = {
 		slug: { type: graphql.GraphQLString, description: 'The url slug that identifies the post' },
 	},
 	resolve: async function(_, { slug }) {
+		if (!slug) throw new Error('Must provide a post slug')
 		return await PostRepo.findById(slug)
 	},
 }
