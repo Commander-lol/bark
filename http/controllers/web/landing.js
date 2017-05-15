@@ -9,6 +9,8 @@ exports.index = async ctx => {
 
 	const renderer = new Templater(...props)
 
+	await renderer.init()
+
 	const val = await renderer.render('blog', {})
 
 	console.log(val)
