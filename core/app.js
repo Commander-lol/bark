@@ -8,7 +8,7 @@ const { subdomains } = local('http/utils')
 
 const graphql = local('services/graphql')
 const httpLogger = local('http/middleware/logging/http')
-
+const static = local('http/middleware/static')
 
 const apply = router => {
 	app.use(router.routes())
@@ -21,6 +21,7 @@ app.use(body())
 
 app.use(httpLogger)
 
+app.use(static)
 app.use(mount('/graphql', graphql))
 
 if (env('API_STRATEGY') === 'path') {

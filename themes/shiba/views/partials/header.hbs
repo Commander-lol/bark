@@ -1,8 +1,12 @@
-<div>
-	<nav>
-		<ul>
-			<li>Hello</li>
-			<li>World</li>
-		</ul>
-	</nav>
-</div>
+<nav class="sidebar pure-u-1-4">
+	<h1 class="sidebar-title">{{meta.title}}</h1>
+	{{#if meta.description}}
+		<p>
+			{{meta.description}}
+		</p>
+	{{/if}}
+	<div class="sidebar-controls">
+		<a href="/" class="pure-button outline primary">Posts</a>
+		<a href="/rss" class="pure-button outline primary">Feed</a>
+	</div>
+</nav>

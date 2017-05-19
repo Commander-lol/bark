@@ -1,6 +1,28 @@
 {{#extend "layouts/main"}}
 	{{#content "body"}}
 		{{> "partials/header"}}
-		<p>This is the blog page</p>
+		<div class="posts pure-u-3-4">
+			{{#each posts}}
+				<article class="posts-listing">
+					<header class="posts-listing-header">
+						<h2 class="posts-listing-title">{{this.title}}</h2>
+						<span class="posts-listing-author">{{either this.author.username this.author.email}}</span>
+						<time datetime="{{this.created_at}}">{{time this.created_at}}</time>
+					</header>
+					<section class="posts-listing-body">
+						<p>
+							{{this.excerpt}}
+						</p>
+					</section>
+				</article>
+			{{/each}}
+			<div class="posts-controls">
+				{{#if hasPrev}}<a class="pure-button pure-button-primary" href="/?page={{sub page 1}}">Previous</a>{{/if}}
+				{{#unless hasPrev}}<span class="filler-w-100"></span>{{/unless}}
+				<span class="filler-w-100"></span>
+				{{#unless hasNext}}<span class="filler-w-100"></span>{{/unless}}
+				{{#if hasNext}}<a class="pure-button pure-button-primary" href="/?page={{add page 1}}">Next</a>{{/if}}
+			</div>
+		</div>
 	{{/content}}
 {{/extend}}

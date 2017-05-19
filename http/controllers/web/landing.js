@@ -1,19 +1,27 @@
 const Templater = local('services/templates')
-const theme = local('services/theme')
+const posts = local('database/repositories/post')
+const meta = local('database/repositories/meta')
+const serialise = local('http/serialisers/post')
 
 exports.index = async ctx => {
-	const props = await Promise.all([
-		theme.getPath(),
-		theme.getThemeParams(),
-	])
+	const { page = 1, perPage = 5 } = ctx.query
 
-	const renderer = new Templater(...props)
+	const nPage = Number(page)
+	const nPerPage = Number(perPage)
 
-	await renderer.init()
+	const renderer = await Templater.initFromTheme()
 
-	const val = await renderer.render('blog', {})
+	const count = await meta.postCount()
+	const query = posts.baseQuery().page(nPage, nPerPage)
+	const entries = await posts.find(query)
 
-	console.log(val)
+	const hasNext = ((nPage - 1) * nPerPage) + entries.length < count
+	const hasPrev = nPage !== 1
 
-	ctx.body = val
+	ctx.type = 'text/html'
+	ctx.body = await renderer.render('blog', Object.assign(
+		{},
+		{ posts: entries.map(serialise), count, page, perPage, hasNext, hasPrev },
+		Templater.environmentPararms()
+	))
 }
