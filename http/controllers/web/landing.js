@@ -4,7 +4,7 @@ const meta = local('database/repositories/meta')
 const serialise = local('http/serialisers/post')
 
 exports.index = async ctx => {
-	const { page = 1, perPage = 5 } = ctx.query
+	const { page = 1, perPage = 2 } = ctx.query
 
 	const nPage = Number(page)
 	const nPerPage = Number(perPage)

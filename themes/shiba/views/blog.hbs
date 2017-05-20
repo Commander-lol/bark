@@ -16,12 +16,11 @@
 					</section>
 				</article>
 			{{/each}}
+			<div class="filler"></div>
 			<div class="posts-controls">
-				{{#if hasPrev}}<a class="pure-button pure-button-primary" href="/?page={{sub page 1}}">Previous</a>{{/if}}
-				{{#unless hasPrev}}<span class="filler-w-100"></span>{{/unless}}
-				<span class="filler-w-100"></span>
-				{{#unless hasNext}}<span class="filler-w-100"></span>{{/unless}}
-				{{#if hasNext}}<a class="pure-button pure-button-primary" href="/?page={{add page 1}}">Next</a>{{/if}}
+				<a class="pure-button pure-button-primary" href="/?page={{sub page 1}}" {{#unless hasPrev}}disabled{{/unless}}>Previous</a>
+				<span class="filler-w-100">{{page}} / {{total_pages}}</span>
+				<a class="pure-button pure-button-primary" href="/?page={{add page 1}}" {{#unless hasNext}}disabled{{/unless}}>Next</a>
 			</div>
 		</div>
 	{{/content}}
