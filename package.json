@@ -7,7 +7,9 @@
   "license": "BSD-2-Clause",
   "scripts": {
     "dev": "nodemon bark",
-    "postinstall": "node jeeves inform"
+    "postinstall": "node jeeves inform",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "@commander-lol/validate": "^1.0.1",
@@ -26,7 +28,8 @@
     "neodoc": "^1.4.0",
     "sequelize": "^3.30.2",
     "sequelize-cli": "^2.5.1",
-    "uuid": "^3.0.1"
+    "uuid": "^3.0.1",
+    "snyk": "^1.29.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
@@ -34,5 +37,6 @@
   "engineStrict": true,
   "engines": {
     "node": ">=7.6.0"
-  }
+  },
+  "snyk": true
 }
