@@ -9,4 +9,6 @@ exports.findOne = query => User.findOne(query.get())
 
 exports.find = query => User.findAll(query.get())
 
+exports.all = () => exports.find((new Query))
+
 exports.findById = id => exports.findOne((new Query).where('id', id))

@@ -34,7 +34,6 @@ exports.create = async ctx => {
 		ctx.body = errors
 	} else {
 		const val = await UserRepo.create(body)
-		console.log(val)
 		ctx.body = { result: val }
 	}
 }

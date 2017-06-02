@@ -7,7 +7,6 @@ const serialise = require('../../serialisers/post')
 exports.index = async ctx => {
 	const query = new Query()
 	const posts = await BlogRepo.find(query)
-	console.log(posts)
 	ctx.body = { posts: posts.map(serialise) }
 }
 
@@ -31,7 +30,6 @@ exports.create = async ctx => {
 	} else {
 		body.author_id = 1
 		const val = await BlogRepo.create(body)
-		console.log(val)
 		ctx.body = { result: val }
 	}
 }

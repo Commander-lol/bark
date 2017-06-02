@@ -3,9 +3,26 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>{{ blog_name }}</title>
+		<title>{{#block "title"}}Blog{{/block}} :: {{ blog_name }}</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Noto+Sans|Raleway" rel="stylesheet">
+		<link rel="stylesheet"
+			  href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.2/pure-min.css"
+			  integrity="sha256-l8LBIT/hSUv+lPB5sCHme+XoztA5gysT4rV/kDYas/c="
+			  crossorigin="anonymous" />
+		<link rel=stylesheet href="/css/styles.css">
+
+		{{#block "styles"}}
+
+		{{/block}}
 	</head>
 	<body>
-		{{{ content }}}
+		<main class="container pure-g">
+			{{#block "body"}}{{/block}}
+		</main>
+
+		{{#block "scripts"}}
+
+		{{/block}}
 	</body>
 </html>

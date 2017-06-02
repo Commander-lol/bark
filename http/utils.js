@@ -6,3 +6,11 @@ exports.subdomains = map => async (ctx, next) => {
 		await next()
 	}
 }
+
+exports.HttpError = class HttpError extends Error {
+	constructor(status, message) {
+		super(message)
+		this.statusMessage = message
+		this.statusCode = status
+	}
+}

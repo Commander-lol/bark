@@ -1,7 +1,27 @@
-<!DOCTYPE html>
-<html>
-<body>
-<h1>Welcome To Bark</h1>
-<p>Woof Woof</p>
-</body>
-</html>
+{{#extend "layouts/main"}}
+	{{#content "body"}}
+		{{> "partials/header"}}
+		<div class="posts pure-u-3-4">
+			{{#each posts}}
+				<article class="posts-listing">
+					<header class="posts-listing-header">
+						<h2 class="posts-listing-title">{{this.title}}</h2>
+						<span class="posts-listing-author">{{either this.author.username this.author.email}}</span>
+						<time datetime="{{this.created_at}}">{{time this.created_at}}</time>
+					</header>
+					<section class="posts-listing-body">
+						<p>
+							{{this.excerpt}}
+						</p>
+					</section>
+				</article>
+			{{/each}}
+			<div class="filler"></div>
+			<div class="posts-controls">
+				<a class="pure-button pure-button-primary" href="/?page={{sub page 1}}{{qsa 'page'}}" {{#unless hasPrev}}disabled{{/unless}}>Previous</a>
+				<span class="posts-controls-count">{{page}} / {{total_pages}}</span>
+				<a class="pure-button pure-button-primary" href="/?page={{add page 1}}{{qsa 'page'}}" {{#unless hasNext}}disabled{{/unless}}>Next</a>
+			</div>
+		</div>
+	{{/content}}
+{{/extend}}

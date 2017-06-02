@@ -1,8 +1,11 @@
 {
   "name": "Shiba",
-  "layouts": {
-	"blog": "default",
-	"post": "default",
-	"static": "static-layout"
-  }
+  "description": "A simple light and dark theme, perfect for textual blogs with a low to medium amount of media content",
+  "custom_data": [
+	{
+	  "key": "GA_KEY",
+	  "name": "Google analytics key",
+	  "type": "string"
+	}
+  ]
 }
