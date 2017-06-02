@@ -1,5 +1,9 @@
 const hydrateUsers = require('./middleware/hydrate/user')
 const hydratePosts = require('./middleware/hydrate/post')
+const errorHandler = require('./middleware/errors/JsonError')
+
+const { restrictToGroup: restrict } = require('./middleware/authentication')
+
 const Router = require('koa-router')
 
 const controller = (name, method) => require('./controllers/api/' + name)[method]
@@ -12,6 +16,8 @@ const router = (() => {
 	return new Router()
 })()
 
+router.use(errorHandler)
+
 hydrateUsers(router)
 hydratePosts(router)
 
@@ -21,6 +27,6 @@ router.post('/users', controller('users', 'create'))
 
 router.get('/posts', controller('posts', 'index'))
 router.get('/posts/:postId', controller('posts', 'one'))
-router.post('/posts', controller('posts', 'create'))
+router.post('/posts', restrict('editor'), controller('posts', 'create'))
 
 module.exports = router

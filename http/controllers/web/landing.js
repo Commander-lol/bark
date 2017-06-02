@@ -4,7 +4,7 @@ const meta = local('database/repositories/meta')
 const serialise = local('http/serialisers/post')
 
 exports.index = async ctx => {
-	const { page = 1, perPage = 2 } = ctx.query
+	const { page = 1, perPage = 5 } = ctx.query
 
 	const nPage = Number(page)
 	const nPerPage = Number(perPage)
@@ -12,6 +12,7 @@ exports.index = async ctx => {
 	const renderer = await Templater.initFromTheme()
 
 	const count = await meta.postCount()
+	const pages = Math.ceil(count / perPage)
 	const query = posts.baseQuery().page(nPage, nPerPage)
 	const entries = await posts.find(query)
 
@@ -21,7 +22,7 @@ exports.index = async ctx => {
 	ctx.type = 'text/html'
 	ctx.body = await renderer.render('blog', Object.assign(
 		{},
-		{ posts: entries.map(serialise), count, page, perPage, hasNext, hasPrev },
+		{ posts: entries.map(serialise), total_pages: pages, page, perPage, hasNext, hasPrev, _qsdata: ctx.query },
 		Templater.environmentPararms()
 	))
 }

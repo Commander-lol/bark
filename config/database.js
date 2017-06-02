@@ -10,6 +10,7 @@ module.exports = {
 		'database': env('DB_DATABASE', 'bark_dev'),
 		'host': env('DB_HOST', '127.0.0.1'),
 		'dialect': env('DB_ADAPTER', 'mysql'),
+		'logging': false,
 	},
 	'test': {
 		'username': env('DB_USERNAME'),
@@ -17,6 +18,7 @@ module.exports = {
 		'database': env('DB_DATABASE', 'bark_test'),
 		'host': env('DB_HOST', '127.0.0.1'),
 		'dialect': env('DB_ADAPTER', 'mysql'),
+		'logging': false,
 	},
 	'production': {
 		'username': env('DB_USERNAME'),
@@ -24,5 +26,6 @@ module.exports = {
 		'database': env('DB_DATABASE', 'bark'),
 		'host': env('DB_HOST', '127.0.0.1'),
 		'dialect': env('DB_ADAPTER', 'mysql'),
+		'logging': false,
 	},
 }

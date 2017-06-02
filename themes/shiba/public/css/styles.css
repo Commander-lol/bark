@@ -52,6 +52,11 @@ html, body {
 	color: #2B2D42;
 }
 
+.pure-button.pure-button-primary {
+	background-color: #2B2D42;
+	color: #EF233C;
+}
+
 .posts {
 	background-color: #EDF2F4;
 	flex: 1;
@@ -97,6 +102,14 @@ html, body {
 	padding: 20px;
 	display: flex;
 	justify-content: center;
+}
+
+.posts-controls-count {
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100px;
 }
 
 .posts-controls .pure-button {

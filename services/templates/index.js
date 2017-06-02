@@ -1,9 +1,11 @@
 const hbs = require('handlebars')
 const layout = require('handlebars-layouts')
 const path = require('path')
-const theme = require('./theme')
+const theme = require('../theme')
 const Defer = require('defer-class')
 const moment = require('moment')
+
+const qsHelpers = require('./helpers/qs')
 
 module.exports = class TemplateRenderer {
 
@@ -46,6 +48,9 @@ module.exports = class TemplateRenderer {
 		renderer.registerHelper('sub', (a, b) => Number(a) - Number(b))
 		renderer.registerHelper('either', (a, b) => a ? a : b)
 		renderer.registerHelper('time', time => moment.utc(time).format('dddd, MMMM Do YYYY, h:mm:ss a'))
+		renderer.registerHelper('plugin', opts => opts.fn(opts.data)) // Todo: Implement plugin block
+
+		qsHelpers(renderer)
 
 		this.renderer = renderer
 	}

@@ -12,7 +12,7 @@ exports.create = async data => {
 
 exports.findOne = query => BlogPost.findOne(query.get())
 
-exports.find = query => console.log(query.get()) || BlogPost.findAll(query.get())
+exports.find = query => BlogPost.findAll(query.get())
 
 exports.all = () => exports.find(baseQuery())
 
