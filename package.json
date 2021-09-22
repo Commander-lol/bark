@@ -22,7 +22,7 @@
     "graphql": "^0.9.6",
     "handlebars": "^4.0.6",
     "handlebars-layouts": "^3.1.4",
-    "inquirer": "^3.0.6",
+    "inquirer": "^7.0.5",
     "koa": "^2.1.0",
     "koa-bodyparser": "^4.1.0",
     "koa-graphql": "^0.7.0",
