@@ -1860,9 +1860,14 @@ moment-timezone@^0.5.4:
   dependencies:
     moment ">= 2.6.0"
 
-"moment@>= 2.6.0", moment@^2.13.0, moment@^2.15.1, moment@^2.18.1, moment@^2.8.3:
+"moment@>= 2.6.0", moment@^2.13.0, moment@^2.15.1, moment@^2.8.3:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
+
+moment@^2.29.4:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
 
 ms@0.7.1:
   version "0.7.1"
@@ -2574,6 +2579,11 @@ sntp@1.x.x:
   resolved "https://registry.yarnpkg.com/sntp/-/sntp-1.0.9.tgz#6541184cc90aeea6c6e7b35e2659082443c66198"
   dependencies:
     hoek "2.x.x"
+
+snyk@^1.29.0:
+  version "1.971.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.971.0.tgz#990e175d2ad83cb1424c08958712184f3f8dc9aa"
+  integrity sha512-DJTVwqtehQ1iN0Ju6LamqiNAVutm5Gc8gHpeozVyEEzThvK5XsDRlFe7WG1MIiMmXM5/Fry1P1GAt39yH0B0CQ==
 
 source-map@^0.4.4:
   version "0.4.4"
